@@ -16,4 +16,4 @@ Describe the project and its funciationality \*\*\*
 
 This webpage is deployed to Github pages
 
-- Deployment link: github.com:carrascoedgar/se_project_spots.git
+- [Deployment link:](https://carrascoedgar.github.io/se_project_spots/)
