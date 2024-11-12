@@ -4,7 +4,7 @@ An image sharing site.
 
 ## Description
 
-Describe the project and its funciationality \*\*\*
+This project is a Grid style page. It is to highlight Bessie Coleman as she was a Civil Aviator (Pilot). The grid has different images that were put in place with grid style.
 
 ## Technoligies and skills used
 
@@ -16,4 +16,4 @@ Describe the project and its funciationality \*\*\*
 
 This webpage is deployed to Github pages
 
-- [Deployment link:](https://carrascoedgar.github.io/se_project_spots/)
+- [Deployment link](https://carrascoedgar.github.io/se_project_spots/)
