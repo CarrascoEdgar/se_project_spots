@@ -38,3 +38,7 @@ Spot lighting Bessie Coleman who is a Civil Aviator showing pictures similar to 
 This webpage is deployed to Github pages
 
 - [Deployment link](https://carrascoedgar.github.io/se_project_spots/)
+
+## Project video
+
+- [Deplopyment link](https://www.loom.com/share/5cbee112a03549458910b37c7ebccfee?sid=9908cc8a-0c02-458a-b53e-179ff21bca75)
