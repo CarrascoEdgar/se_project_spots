@@ -27,14 +27,12 @@ function getCardElement(data){
   .cloneNode(true);
 
   const cardNameEl = CardElement.querySelector(".card__title");
+  const imageEl = CardElement.querySelectorAll(".card__images");
 
   cardNameEl.textContent = data.name;
-
-  const imageEl = CardElement.querySelector(".card__image");
   imageEl.src = data.link;
   imageEl.alt = data.name;
 
-  //set attributes src="" and alt"
 
   return CardElement;
 }
@@ -64,6 +62,9 @@ profileFormElement.addEventListener("submit", handleEditFormSubmit);
 
 for (let i = 0; i < initialCards.length; i++) {
   const CardElement = getCardElement(initialCards[i]);
-  cardsList.prepend(CardElement);
+  cardsList.append(CardElement);
 }
 
+
+// can change to cardsList.prepend(CardElement) //
+// this ^ command will rearrange the order of images from (1st - last) to (last to 1st).//
