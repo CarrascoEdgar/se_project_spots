@@ -22,19 +22,21 @@ const cardTemplate = document.querySelector("#card-template");
 const cardsList = document.querySelector(".cards__list");
 
 function getCardElement(data){
-  const CardElement = cardTemplate.content
+  const cardElement = cardTemplate.content
   .querySelector(".card")
   .cloneNode(true);
+  console.log(cardElement)
 
-  const cardNameEl = CardElement.querySelector(".card__title");
-  const imageEl = CardElement.querySelectorAll(".card__images");
+  const cardNameEl = cardElement.querySelector(".card__title");
+  const imageEl = cardElement.querySelector(".card__image");
+
+  console.log(imageEl)
 
   cardNameEl.textContent = data.name;
   imageEl.src = data.link;
   imageEl.alt = data.name;
 
-
-  return CardElement;
+  return cardElement;
 }
 
 
@@ -61,8 +63,8 @@ editModalCloseButton.addEventListener("click", closeModal);
 profileFormElement.addEventListener("submit", handleEditFormSubmit);
 
 for (let i = 0; i < initialCards.length; i++) {
-  const CardElement = getCardElement(initialCards[i]);
-  cardsList.append(CardElement);
+  const cardElement = getCardElement(initialCards[i]);
+  cardsList.append(cardElement);
 }
 
 
