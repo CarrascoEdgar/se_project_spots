@@ -42,13 +42,11 @@
   transform: rotate(45 deg);
   background-color: transparent;
   cursor: pointer;
-  border: 2px #212121;
   opacity: 40%;
 }
 
 .modal__close-button:hover{
   opacity: 100%;
-  color: #212121;
 }
 
 .modal__title {
@@ -103,8 +101,9 @@
 }
 
 @media screen and (max-width: 627px) {
-  .nodal {
+  .modal {
     padding: 0 10px;
+    cursor: pointer;
   }
 
   .modal__container {
