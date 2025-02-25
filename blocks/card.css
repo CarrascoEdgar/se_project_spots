@@ -18,7 +18,7 @@
 }
 
 .card__like-button {
-  background-image: url(../images/heart-icon.svg);
+  background-image:url("../images/heart-icon.svg");
   height: 20px;
   width: 23px;
   border: none;
@@ -28,7 +28,16 @@
 }
 
 .card__like-button:hover {
-  opacity: 100%;
+  opacity: 1;
+}
+
+.card__like-button_liked {
+  background: url("../images/liked-heart.png");
+  opacity: 1;
+}
+
+.card__like-button_liked:hover {
+  background: url("../images/liked-hovered-heart.png");
 }
 
 .card__title {

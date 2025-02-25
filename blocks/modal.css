@@ -43,6 +43,7 @@
   background-color: transparent;
   cursor: pointer;
   opacity: 40%;
+  transition: background 0.3s;
 }
 
 .modal__close-button:hover{

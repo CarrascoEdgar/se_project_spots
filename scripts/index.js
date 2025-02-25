@@ -8,6 +8,7 @@ const initialCards = [
 ];
 
 const profileEditButton = document.querySelector(".profile__edit-button");
+const cardModalButton = document.querySelector(".profile__add-button");
 const profileName = document.querySelector(".profile__name");
 const profileDescription = document.querySelector(".profile__description");
 
@@ -18,55 +19,90 @@ const editModalCloseButton = editModal.querySelector(".modal__close-button");
 const editModalNameInput = editModal.querySelector("#profile-name-input");
 const editModalDiscriptioninput = editModal.querySelector("#profile-description-input");
 
+const cardModal = document.querySelector("#add-card-modal");
+const cardForm = cardModal.querySelector(".modal__form");
+const cardModalCloseButton = cardModal.querySelector(".modal__close-button");
+const cardNameInput = cardModal.querySelector("#add-card-name-input");
+const cardLinkInput = cardModal.querySelector("#add-card-link-input");
+
 const cardTemplate = document.querySelector("#card-template");
 const cardsList = document.querySelector(".cards__list");
+
+function handleAddCardSubmit(evt){
+  evt.preventDefault();
+  const inputValues = { name: cardNameInput.value, link: cardLinkInput.value };
+  const cardEl = getCardElement(inputValues);
+  cardsList.prepend(cardEl);
+  closeModal(cardModal);
+};
 
 function getCardElement(data){
   const cardElement = cardTemplate.content
   .querySelector(".card")
   .cloneNode(true);
-  console.log(cardElement)
 
   const cardNameEl = cardElement.querySelector(".card__title");
   const imageEl = cardElement.querySelector(".card__image");
+  const cardLikeButton = cardElement.querySelector(".card__like-button");
+  //TODO - SELECT DELETE BUTTON
 
-  console.log(imageEl)
 
   cardNameEl.textContent = data.name;
   imageEl.src = data.link;
   imageEl.alt = data.name;
 
+  cardLikeButton.addEventListener("click", () => {
+    cardLikeButton.classList.toggle("card__like-button_liked");
+  })
+
+
+    //TODO - SET THE LISTENER ON DELETE BUTTON
+    //THE HANDLER SHOULD REMOVE THE CARD FROM THE DOM
   return cardElement;
 }
 
 
-function openModal() {
-  editModalDiscriptioninput.value = profileDescription.textContent;
-  editModalNameInput.value = profileName.textContent;
-  editModal.classList.add("modal_opened");
+function openModal(modal) {
+
+  modal.classList.add("modal_opened");
 }
 
-function closeModal() {
-  editModal.classList.remove("modal_opened");
+function closeModal(modal) {
+  modal.classList.remove("modal_opened");
 }
 
 function handleEditFormSubmit(evt){
   evt.preventDefault();
   profileName.textContent = editModalNameInput.value;
   profileDescription.textContent = editModalDiscriptioninput.value;
-  closeModal();
+  closeModal(editModal);
 }
 
-profileEditButton.addEventListener("click", openModal);
-editModalCloseButton.addEventListener("click", closeModal);
+profileEditButton.addEventListener("click", () => {
+  editModalDiscriptioninput.value = profileDescription.textContent;
+  editModalNameInput.value = profileName.textContent;
+  openModal(editModal);
+});
+editModalCloseButton.addEventListener("click", () => {
+  closeModal(editModal);
+});
+
+cardModalButton.addEventListener("click", () => {
+
+  openModal(cardModal);
+});
+cardModalCloseButton.addEventListener("click", () => {
+  closeModal(cardModal);
+});
+
 
 profileFormElement.addEventListener("submit", handleEditFormSubmit);
+cardForm.addEventListener("submit", handleAddCardSubmit);
 
-for (let i = 0; i < initialCards.length; i++) {
-  const cardElement = getCardElement(initialCards[i]);
-  cardsList.append(cardElement);
-}
-
+initialCards.forEach((item) => {
+  const cardEl = getCardElement(item);
+  cardsList.prepend(cardEl);
+});
 
 // can change to cardsList.prepend(CardElement) //
 // this ^ command will rearrange the order of images from (1st - last) to (last to 1st).//
