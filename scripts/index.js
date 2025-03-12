@@ -24,6 +24,10 @@ const cardForm = cardModal.querySelector(".modal__form");
 const cardModalCloseButton = cardModal.querySelector(".modal__close-button");
 const cardNameInput = cardModal.querySelector("#add-card-name-input");
 const cardLinkInput = cardModal.querySelector("#add-card-link-input");
+const previewModal = document.querySelector("#preview-modal");
+const previewModalImageEl = previewModal.querySelector(".modal__image");
+const previewModalCaptionEl = previewModal.querySelector(".modal__caption");
+const previewModalClose = previewModal.querySelector(".modal__close_type_preview");
 
 const cardTemplate = document.querySelector("#card-template");
 const cardsList = document.querySelector(".cards__list");
@@ -44,7 +48,8 @@ function getCardElement(data){
   const cardNameEl = cardElement.querySelector(".card__title");
   const imageEl = cardElement.querySelector(".card__image");
   const cardLikeButton = cardElement.querySelector(".card__like-button");
-  //TODO - SELECT DELETE BUTTON
+  const cardDeleteButton = cardElement.querySelector(".card__delete-button");
+
 
 
   cardNameEl.textContent = data.name;
@@ -55,9 +60,17 @@ function getCardElement(data){
     cardLikeButton.classList.toggle("card__like-button_liked");
   })
 
+  imageEl.addEventListener("click", () =>{
+    openModal(previewModal);
+    //select other necessary elements (not done inside this function)
+    previewModalImageEl.src = data.link;
+    previewModalCaptionEl.alt = data.name;
+    previewModalCaptionEl.textContent = data.name;
+  })
 
-    //TODO - SET THE LISTENER ON DELETE BUTTON
-    //THE HANDLER SHOULD REMOVE THE CARD FROM THE DOM
+  cardDeleteButton.addEventListener("click", () => {
+    cardElement.remove();
+  })
   return cardElement;
 }
 
@@ -95,6 +108,10 @@ cardModalCloseButton.addEventListener("click", () => {
   closeModal(cardModal);
 });
 
+previewModalClose.addEventListener("click", () => {
+  closeModal(previewModal);
+})
+
 
 profileFormElement.addEventListener("submit", handleEditFormSubmit);
 cardForm.addEventListener("submit", handleAddCardSubmit);
@@ -103,6 +120,3 @@ initialCards.forEach((item) => {
   const cardEl = getCardElement(item);
   cardsList.prepend(cardEl);
 });
-
-// can change to cardsList.prepend(CardElement) //
-// this ^ command will rearrange the order of images from (1st - last) to (last to 1st).//
