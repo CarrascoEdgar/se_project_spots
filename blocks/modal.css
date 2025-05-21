@@ -165,6 +165,15 @@
  opacity: 100%;
 }
 
+.modal__error {
+  display: block;
+  color: #FF0000B2;
+  opacity: 70%;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 110.00000000000001%;
+}
+
 @media screen and (max-width: 627px) {
   .modal {
     padding: 0 10px;
