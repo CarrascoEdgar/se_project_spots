@@ -40,7 +40,7 @@ function handleAddCardSubmit(evt){
   const cardEl = getCardElement(inputValues);
   cardsList.prepend(cardEl);
   evt.target.reset();
-  disabledButton(cardSubmitButton)
+  disabledButton(cardSubmitButton, settings);
   closeModal(cardModal);
 };
 
